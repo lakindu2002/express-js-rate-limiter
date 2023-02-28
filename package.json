@@ -1,0 +1,20 @@
+{
+  "name": "rate-limiter",
+  "version": "1.0.0",
+  "description": "This is a sample Express backend demonstrating DragonflyDB as a Rate Limiter",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "lakindu hewawasam",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongodb": "^5.1.0",
+    "nodemon": "^2.0.20"
+  }
+}
