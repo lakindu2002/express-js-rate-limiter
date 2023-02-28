@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const { addProductsToCart, login, searchProducts, verifyAndAuthenticateToken } = require('./functions/index');
+const { isRateLimitedMiddleware } = require('./redis/client');
 
 const app = express();
 const port = 3000;
@@ -13,9 +14,9 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // define the routes
-app.post('/login', login)
-app.post('/add-to-cart', verifyAndAuthenticateToken, addProductsToCart)
-app.post('/search', verifyAndAuthenticateToken, searchProducts)
+app.post('/login', isRateLimitedMiddleware, login)
+app.post('/add-to-cart', verifyAndAuthenticateToken, isRateLimitedMiddleware, addProductsToCart)
+app.post('/search', verifyAndAuthenticateToken, isRateLimitedMiddleware, searchProducts)
 
 // start the server
 app.listen(port, () => {
